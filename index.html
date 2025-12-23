@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Weather & Irrigation Decision App for Punjab Farmers">
+    <title>किसान मौसम - Farmer Weather</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="app-title">🌾 किसान मौसम</h1>
+            <p class="app-subtitle">Farmer Weather Guide</p>
+        </header>
+
+        <!-- Location Selector -->
+        <section class="location-section">
+            <div class="location-control">
+                <label for="districtSelect" class="label">Select Your District:</label>
+                <select id="districtSelect" class="select-dropdown">
+                    <option value="">-- Choose District --</option>
+                    <option value="amritsar">Amritsar</option>
+                    <option value="gurdaspur">Gurdaspur</option>
+                    <option value="pathankot">Pathankot</option>
+                    <option value="bhatinda">Bhatinda</option>
+                    <option value="faridkot">Faridkot</option>
+                    <option value="ferozepur">Ferozepur</option>
+                    <option value="sangrur">Sangrur</option>
+                    <option value="patiala">Patiala</option>
+                    <option value="ludhiana">Ludhiana</option>
+                    <option value="mansa">Mansa</option>
+                    <option value="chandigarh">Chandigarh</option>
+                    <option value="mohali">Mohali</option>
+                </select>
+                <button id="useGPS" class="btn-secondary">📍 Use GPS</button>
+            </div>
+            <p id="locationStatus" class="location-status">Please select your district</p>
+        </section>
+
+        <!-- Loading Indicator -->
+        <div id="loadingSpinner" class="loading-spinner hidden">
+            <div class="spinner"></div>
+            <p>Loading weather data...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="error-message hidden"></div>
+
+        <!-- Main Content -->
+        <div id="mainContent" class="main-content hidden">
+            <!-- Weather Card -->
+            <section class="weather-card">
+                <h2 class="section-title">📊 Current Weather</h2>
+                <div class="weather-grid">
+                    <div class="weather-item">
+                        <span class="label">Temperature</span>
+                        <span id="temperature" class="value">--°C</span>
+                    </div>
+                    <div class="weather-item">
+                        <span class="label">Humidity</span>
+                        <span id="humidity" class="value">--%</span>
+                    </div>
+                    <div class="weather-item">
+                        <span class="label">Rainfall Chance</span>
+                        <span id="rainfall" class="value">--%</span>
+                    </div>
+                    <div class="weather-item">
+                        <span class="label">Wind Speed</span>
+                        <span id="windSpeed" class="value">-- m/s</span>
+                    </div>
+                </div>
+                <p id="weatherDescription" class="weather-description">Loading weather...</p>
+            </section>
+
+            <!-- Decision Card -->
+            <section class="decision-card" id="decisionCard">
+                <h2 class="section-title">🚜 Irrigation Decision</h2>
+                <div id="decisionResult" class="decision-result">
+                    <div class="decision-status">
+                        <div class="decision-icon" id="decisionIcon">❓</div>
+                        <div class="decision-text">
+                            <p class="decision-title" id="decisionTitle">Analyzing...</p>
+                            <p class="decision-description" id="decisionDescription">Processing weather data</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Organic Farming Tip -->
+            <section class="tips-card">
+                <h2 class="section-title">🌱 Organic Farming Tip</h2>
+                <div class="tip-box" id="tipBox">
+                    <p id="tipText">Loading tips...</p>
+                </div>
+                <button id="nextTipBtn" class="btn-primary">Next Tip →</button>
+            </section>
+
+            <!-- Forecast Info -->
+            <section class="forecast-card">
+                <h2 class="section-title">📅 5-Day Forecast</h2>
+                <div class="forecast-items" id="forecastItems">
+                    <p>Loading forecast...</p>
+                </div>
+            </section>
+
+            <!-- Additional Info -->
+            <section class="info-card">
+                <h2 class="section-title">ℹ️ Decision Logic</h2>
+                <div class="logic-box">
+                    <p><strong>Rainfall Threshold:</strong> <span id="thresholdValue">50</span>%</p>
+                    <p class="logic-explanation">
+                        ✅ If rainfall chance > threshold → Minimal watering needed<br>
+                        🔴 If rainfall chance ≤ threshold → Full irrigation required
+                    </p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
