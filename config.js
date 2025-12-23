@@ -4,9 +4,9 @@
  */
 
 const CONFIG = {
-    // ========== API CONFIGURATION ==========
+
     WEATHER_API: 'https://api.openweathermap.org/data/2.5/forecast',
-    API_KEY: 'bf6488dad66aa5df8c4fdf169f4e34ff', // Get free key from https://openweathermap.org/api
+    API_KEY: process.env.OPENWEATHER_API_KEY || '',
     
     // ========== DECISION THRESHOLDS ==========
     // Rainfall probability threshold (in %)
